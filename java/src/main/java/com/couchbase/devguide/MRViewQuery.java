@@ -20,6 +20,18 @@ public class MRViewQuery extends ConnectionBase {
 
     @Override
     protected void doWork() {
+        /**
+         * from
+         * public static ViewQuery from(String design,
+                                      String view)
+         * Creates an new ViewQuery.
+
+         * Parameters:
+         * design - the name of the design document.
+         * view - the name of the view.
+         * Returns:
+         * a ViewQuery DSL.
+         */
         ViewResult result1 = bucket.query(ViewQuery.from("aatest", "aatest"));
         for (ViewRow row : result1) {
             System.out.println(row); //prints the row
