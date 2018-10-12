@@ -5,7 +5,7 @@ import com.couchbase.client.java.document.json.JsonObject;
 import com.couchbase.client.java.error.DocumentAlreadyExistsException;
 
 /**
- * Example of Expiry/TTL in Java for the Couchbase Developer Guide.
+ * Example of Delete in Java for the Couchbase Developer Guide.
  */
 public class Delete extends ConnectionBase {
 
