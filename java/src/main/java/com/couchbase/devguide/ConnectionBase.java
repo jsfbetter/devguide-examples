@@ -27,10 +27,11 @@ public class ConnectionBase {
     public static final String bucketPassword = "";
     public static final List<String> nodes = Arrays.asList("127.0.0.1");
     
-    // for more about tracer
+    // for more about tracing
     // https://docs.couchbase.com/java-sdk/2.7/tracing-from-the-sdk.html
     // https://docs.couchbase.com/java-sdk/2.7/start-using-sdk.html
     // https://blog.couchbase.com/response-time-observability-with-the-java-sdk/
+    // We shall set them so low that almost everything gets logged - not something you should do in production!
     
     public static Tracer tracer = ThresholdLogTracer.create(ThresholdLogReporter.builder()
               .kvThreshold(1000, TimeUnit.MICROSECONDS) // 1 microsecond
