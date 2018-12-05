@@ -10,6 +10,11 @@ import com.couchbase.client.java.env.CouchbaseEnvironment;
 import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 import org.apache.log4j.Logger;
 
+import com.couchbase.client.core.tracing.ThresholdLogReporter;
+import com.couchbase.client.core.tracing.ThresholdLogTracer;
+import io.opentracing.Tracer;
+import java.util.concurrent.TimeUnit;
+
 public class ConnectionBase {
 
     protected static final Logger LOGGER = Logger.getLogger("devguide");
@@ -21,7 +26,18 @@ public class ConnectionBase {
     public static final String bucketName = "default";
     public static final String bucketPassword = "";
     public static final List<String> nodes = Arrays.asList("127.0.0.1");
-    public static CouchbaseEnvironment environment = DefaultCouchbaseEnvironment.create();
+
+    public static Tracer tracer = ThresholdLogTracer.create(ThresholdLogReporter.builder()
+              .kvThreshold(1000, TimeUnit.MICROSECONDS) // 1 microsecond
+              .logInterval(5, TimeUnit.SECONDS) // log every second
+              .sampleSize(Integer.MAX_VALUE)
+              .pretty(true) // pretty print the json output in the logs
+              .build());
+
+    public static CouchbaseEnvironment environment = DefaultCouchbaseEnvironment.builder()
+            .tracer(tracer)
+            .build();
+    // public static CouchbaseEnvironment environment = DefaultCouchbaseEnvironment.create();
 
     public ConnectionBase() {
         //connect to the cluster by hitting one of the given nodes
