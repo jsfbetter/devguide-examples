@@ -23,9 +23,9 @@ public class ConnectionBase {
     protected final Bucket bucket;
 
     //=== EDIT THESE TO ADAPT TO YOUR COUCHBASE INSTALLATION ===
-    public static final String bucketName = "aatest";
-    public static final String bucketPassword = "123456";
-    public static final List<String> nodes = Arrays.asList("10.153.194.222");
+    public static final String bucketName = "default";
+    public static final String bucketPassword = "";
+    public static final List<String> nodes = Arrays.asList("127.0.0.1");
 
     public static Tracer tracer = ThresholdLogTracer.create(ThresholdLogReporter.builder()
               .kvThreshold(1, TimeUnit.MICROSECONDS) // 1 microsecond
