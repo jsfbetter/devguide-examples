@@ -23,19 +23,13 @@ public class ConnectionBase {
     protected final Bucket bucket;
 
     //=== EDIT THESE TO ADAPT TO YOUR COUCHBASE INSTALLATION ===
-    public static final String bucketName = "default";
-    public static final String bucketPassword = "";
-    public static final List<String> nodes = Arrays.asList("127.0.0.1");
-    
-    // for more about tracing
-    // https://docs.couchbase.com/java-sdk/2.7/tracing-from-the-sdk.html
-    // https://docs.couchbase.com/java-sdk/2.7/start-using-sdk.html
-    // https://blog.couchbase.com/response-time-observability-with-the-java-sdk/
-    // We shall set them so low that almost everything gets logged - not something you should do in production!
-    
+    public static final String bucketName = "aatest";
+    public static final String bucketPassword = "123456";
+    public static final List<String> nodes = Arrays.asList("10.153.194.222");
+
     public static Tracer tracer = ThresholdLogTracer.create(ThresholdLogReporter.builder()
-              .kvThreshold(1000, TimeUnit.MICROSECONDS) // 1 microsecond
-              .logInterval(5, TimeUnit.SECONDS) // log every second
+              .kvThreshold(1, TimeUnit.MICROSECONDS) // 1 microsecond
+              .logInterval(1, TimeUnit.SECONDS) // log every second
               .sampleSize(Integer.MAX_VALUE)
               .pretty(true) // pretty print the json output in the logs
               .build());
