@@ -112,6 +112,6 @@ public class BulkInsert2 extends ConnectionBase {
     }
 
     public static void main(String[] args) {
-        new BulkInsert().execute();
+        new BulkInsert2().execute();
     }
 }
