@@ -19,7 +19,7 @@ import com.couchbase.client.java.document.StringDocument;
 /**
  * Example of Bulk Insert in Java for the Couchbase Developer Guide.
  */
-public class BulkInsert extends ConnectionBase {
+public class BulkInsert2 extends ConnectionBase {
 
     @Override
     protected void doWork() {
